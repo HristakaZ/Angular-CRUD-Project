@@ -1,0 +1,38 @@
+<form [formGroup]="gameStudioForm" (ngSubmit)="createGameStudio()">
+    
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game studio's name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the date of establishment</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfEstablishment">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game studio's main office</mat-label>
+            <input matInput formControlName="mainOffice">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game studio's games</mat-label> <!--have to change it to a dropdown later on-->
+            <input matInput formControlName="games">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button mat-stroked-button color="accent" type="submit">Save</button>
+    </div>
+
+  </form>

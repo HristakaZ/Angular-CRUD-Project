@@ -1,4 +1,4 @@
-import { Game } from "../games/game.model";
+import { Game } from "../game/game.model";
 
 export class GameStudio {
     id!: number;
