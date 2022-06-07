@@ -1,0 +1,49 @@
+<table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date Of Establishment:</th>
+      <th>Main Office:</th>
+      <th>Games:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let gameStudio of gameStudios">
+      <td>{{gameStudio.id}}</td>
+      <td>{{gameStudio.name}}</td>
+      <td>{{gameStudio.dateOfEstablishment}}</td>
+      <td>{{gameStudio.mainOffice}}</td>
+      <td *ngFor="let game of gameStudio.games">{{game.name}}, </td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <br>
+  <br>
+  <br>
+
+   <table mat-table [dataSource]="gameStudios" class="mat-elevation-z8"><!--(change)="ngOnInit()"-->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let gameStudio">{{gameStudio.name}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="dateOfEstablishment">
+      <th mat-header-cell *matHeaderCellDef>Date Of Establishment</th>
+      <td mat-cell *matCellDef="let gameStudio">{{gameStudio.dateOfEstablishment}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mainOffice">
+      <th mat-header-cell *matHeaderCellDef>Main Office</th>
+      <td mat-cell *matCellDef="let gameStudio">{{gameStudio.mainOffice}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="games.name">
+      <th mat-header-cell *matHeaderCellDef>Games</th>
+      <td mat-cell *matCellDef="let gameStudio">{{gameStudio.games.name == null ? 'NO DATA!' : gameStudio.games.name}}</td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>

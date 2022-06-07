@@ -11,18 +11,24 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { GameStudioComponent } from './game-studio/game-studio.component';
+import { CreateGameStudioComponent } from './game-studio/create/create-game-studio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import { GameStudioService } from './game-studio/services/game-studio.services';
+import { CommonModule } from '@angular/common';
+import { GameStudioComponent } from './game-studio/read/game-studio.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     WelcomeComponent,
+    CreateGameStudioComponent,
     GameStudioComponent
   ],
   imports: [
@@ -38,9 +44,15 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    CommonModule,
+    MatTableModule
   ],
-  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
+    GameStudioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

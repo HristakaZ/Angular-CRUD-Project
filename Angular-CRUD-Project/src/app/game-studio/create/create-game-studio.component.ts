@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'game-studio-component',
-  templateUrl: './game-studio.component.html',
-  styleUrls: ['./game-studio.component.css']
+  selector: 'create-game-studio-component',
+  templateUrl: './create-game-studio.component.html',
+  styleUrls: ['./create-game-studio.component.css']
 })
 
-export class GameStudioComponent implements OnInit {
+export class CreateGameStudioComponent implements OnInit {
     gameStudioForm!: FormGroup;
 
     ngOnInit(): void {

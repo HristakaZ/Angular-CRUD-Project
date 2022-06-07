@@ -1,0 +1,23 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "FIFA",
+      "dateOfCreation": "01-01-2000",
+      "dateOfPremiere": "01-01-2000",
+      "isAvailable": true,
+      "gameStudio": "EA"
+    }
+  ],
+  "gameStudios": [
+    {
+      "id": 1,
+      "name": "EA",
+      "dateOfEstablishment": "01-01-2000",
+      "mainOffice": "Boston, Massachusets, USA",
+      "games": [
+        {"name": "FIFA"}
+      ]
+    }
+  ]
+}
