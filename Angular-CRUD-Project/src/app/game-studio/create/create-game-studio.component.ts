@@ -14,8 +14,7 @@ export class CreateGameStudioComponent implements OnInit {
         this.gameStudioForm = new FormGroup({
             name: new FormControl(''),
             dateOfEstablishment: new FormControl(''),
-            mainOffice: new FormControl(''),
-            games: new FormControl('')
+            mainOffice: new FormControl('')
         });
     }
 
