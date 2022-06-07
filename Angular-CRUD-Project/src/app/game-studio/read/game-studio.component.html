@@ -1,29 +1,4 @@
-<table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Date Of Establishment:</th>
-      <th>Main Office:</th>
-      <th>Games:</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let gameStudio of gameStudios">
-      <td>{{gameStudio.id}}</td>
-      <td>{{gameStudio.name}}</td>
-      <td>{{gameStudio.dateOfEstablishment}}</td>
-      <td>{{gameStudio.mainOffice}}</td>
-      <td *ngFor="let game of gameStudio.games">{{game.name}}, </td>
-    </tr>
-    </tbody>
-  </table>
-  
-  <br>
-  <br>
-  <br>
-
-   <table mat-table [dataSource]="gameStudios" class="mat-elevation-z8"><!--(change)="ngOnInit()"-->
+   <table mat-table [dataSource]="gameStudios" class="mat-elevation-z8" (change)="ngOnInit()">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let gameStudio">{{gameStudio.name}}</td>
@@ -39,9 +14,14 @@
       <td mat-cell *matCellDef="let gameStudio">{{gameStudio.mainOffice}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="games.name">
+    <ng-container matColumnDef="games">
       <th mat-header-cell *matHeaderCellDef>Games</th>
-      <td mat-cell *matCellDef="let gameStudio">{{gameStudio.games.name == null ? 'NO DATA!' : gameStudio.games.name}}</td>
+      <td mat-cell *matCellDef="let gameStudio">
+         <!--THIS IS WHERE YOU ARE ITERATING THROUGH ARRAY OF RULES OBJECT-->
+          <ng-container *ngFor="let game of gameStudio.games; let isLast = last">
+              {{isLast ? game.name : game.name + ','}}
+          </ng-container>
+      </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

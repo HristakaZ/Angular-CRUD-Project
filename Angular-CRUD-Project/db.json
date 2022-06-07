@@ -16,7 +16,8 @@
       "dateOfEstablishment": "01-01-2000",
       "mainOffice": "Boston, Massachusets, USA",
       "games": [
-        {"name": "FIFA"}
+        {"name": "FIFA"},
+        {"name": "xdsadasdsa"}
       ]
     }
   ]

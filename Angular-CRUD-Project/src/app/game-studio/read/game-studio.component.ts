@@ -10,7 +10,7 @@ import { GameStudioService } from '../services/game-studio.services';
 
 export class GameStudioComponent implements OnInit {
     public gameStudios!: GameStudio[];
-    public columnsToDisplay = ['name', 'dateOfEstablishment', 'mainOffice', 'games.name'];
+    public columnsToDisplay = ['name', 'dateOfEstablishment', 'mainOffice', 'games'];
     constructor(private gameStudioService: GameStudioService) {
 
     }
