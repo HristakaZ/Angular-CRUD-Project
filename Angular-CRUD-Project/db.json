@@ -16,9 +16,25 @@
       "dateOfEstablishment": "01-01-2000",
       "mainOffice": "Boston, Massachusets, USA",
       "games": [
-        {"name": "FIFA"},
-        {"name": "xdsadasdsa"}
+        {
+          "name": "FIFA"
+        },
+        {
+          "name": "xdsadasdsa"
+        }
       ]
+    },
+    {
+      "name": "subscribing after creating",
+      "dateOfEstablishment": "2022-06-07T21:00:00.000Z",
+      "mainOffice": "yes, it works",
+      "id": 2
+    },
+    {
+      "name": "Ico's Gaming Studio X",
+      "dateOfEstablishment": "2022-06-08T21:00:00.000Z",
+      "mainOffice": "Veliko Tarnovo, Bulgaria",
+      "id": 3
     }
   ]
 }

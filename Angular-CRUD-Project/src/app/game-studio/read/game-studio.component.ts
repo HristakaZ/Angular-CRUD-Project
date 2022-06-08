@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { GameStudio } from '../game-studio.model';
 import { GameStudioService } from '../services/game-studio.services';
 
@@ -8,7 +8,7 @@ import { GameStudioService } from '../services/game-studio.services';
   styleUrls: ['./game-studio.component.css']
 })
 
-export class GameStudioComponent implements OnInit {
+export class GameStudioComponent implements OnInit, AfterViewInit {
     public gameStudios!: GameStudio[];
     public columnsToDisplay = ['name', 'dateOfEstablishment', 'mainOffice', 'games', 'updateButton', 'deleteButton'];
     constructor(private gameStudioService: GameStudioService) {
@@ -18,7 +18,12 @@ export class GameStudioComponent implements OnInit {
     ngOnInit(): void {
       this.gameStudioService.getAll().subscribe((gameStudios) => {
         this.gameStudios = gameStudios;
-        console.log(this.gameStudios);
+      });
+    }
+    
+    ngAfterViewInit(): void {
+      this.gameStudioService.getAll().subscribe((gameStudios) => {
+        this.gameStudios = gameStudios;
       });
     }
 }

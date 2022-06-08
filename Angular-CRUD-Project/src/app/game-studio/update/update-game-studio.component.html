@@ -1,5 +1,12 @@
-<form [formGroup]="createGameStudioForm" (ngSubmit)="createGameStudio()">
-    
+<form [formGroup]="updateGameStudioForm" (ngSubmit)="updateGameStudio()">
+
+    <div *ngIf="!isIdInputHidden">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game studio's id</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+    </div>
+
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter the game studio's name</mat-label>
@@ -25,7 +32,7 @@
     </div>
 
     <div>
-        <button mat-stroked-button color="accent" type="submit">Create</button>
+        <button mat-stroked-button color="accent" type="submit">Update</button>
     </div>
 
   </form>

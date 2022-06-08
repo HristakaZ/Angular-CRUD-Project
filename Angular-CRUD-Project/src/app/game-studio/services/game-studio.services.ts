@@ -12,11 +12,11 @@ export class GameStudioService {
     return this.httpClient.get<GameStudio[]>('http://localhost:3000/gameStudios');
   }
 
-  public getById(id: string): Observable<GameStudio> {
+  public getById(id: number): Observable<GameStudio> {
     return this.httpClient.get<GameStudio>(`http://localhost:3000/gameStudios/${id}`);
   }
 
-  public delete(id: string): Observable<Object> {
+  public delete(id: number): Observable<Object> {
     return this.httpClient.delete(`http://localhost:3000/gameStudios/${id}`);
   }
 

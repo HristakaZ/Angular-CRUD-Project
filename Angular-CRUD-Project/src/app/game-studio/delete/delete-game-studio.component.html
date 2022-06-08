@@ -1,0 +1,24 @@
+<form [formGroup]="deleteGameStudioForm" (ngSubmit)="deleteGameStudio()">
+    <h1>Are you sure you want to delete this game studio?</h1>
+    <div *ngIf="!isIdInputHidden">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game studio's id</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <ng-container>
+        <h2>Name: {{gameStudio.name}}</h2>
+        <p>Date Of Establishment: {{gameStudio.dateOfEstablishment | date : 'dd/MM/yyyy'}}</p>
+        <p>Main Office: {{gameStudio.mainOffice}}</p>
+    </ng-container>
+    <h2>Games:</h2>
+    <ng-container *ngFor="let game of gameStudio.games; let i = index">
+        <p>{{(i + 1).toString() + ': ' + game.name}}</p>
+    </ng-container>
+
+    <div>
+        <button mat-stroked-button color="accent" type="submit">Delete</button>
+    </div>
+
+  </form>

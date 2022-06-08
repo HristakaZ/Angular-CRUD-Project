@@ -6,4 +6,8 @@ export class GameStudio {
     dateOfEstablishment!: Date;
     mainOffice!: string;
     games!: Game[];
+
+    constructor() {
+        
+    }
 }

@@ -22,6 +22,8 @@ import { GameStudioService } from './game-studio/services/game-studio.services';
 import { CommonModule } from '@angular/common';
 import { GameStudioComponent } from './game-studio/read/game-studio.component';
 import { MatTableModule } from '@angular/material/table';
+import { UpdateGameStudioComponent } from './game-studio/update/update-game-studio.component';
+import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-studio.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     ToolbarComponent,
     WelcomeComponent,
     CreateGameStudioComponent,
-    GameStudioComponent
+    GameStudioComponent,
+    UpdateGameStudioComponent,
+    DeleteGameStudioComponent
   ],
   imports: [
     BrowserModule,
