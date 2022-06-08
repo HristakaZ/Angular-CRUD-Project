@@ -15,15 +15,20 @@ import { CreateGameStudioComponent } from './game-studio/create/create-game-stud
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { GameStudioService } from './game-studio/services/game-studio.services';
+import { GameStudioService } from './game-studio/services/game-studio.service';
 import { CommonModule } from '@angular/common';
 import { GameStudioComponent } from './game-studio/read/game-studio.component';
 import { MatTableModule } from '@angular/material/table';
 import { UpdateGameStudioComponent } from './game-studio/update/update-game-studio.component';
 import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-studio.component';
+import { GameComponent } from './game/read/game.component';
+import { CreateGameComponent } from './game/create/create-game.component';
+import { GameService } from './game-studio/services/game.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,9 @@ import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-stud
     CreateGameStudioComponent,
     GameStudioComponent,
     UpdateGameStudioComponent,
-    DeleteGameStudioComponent
+    DeleteGameStudioComponent,
+    GameComponent,
+    CreateGameComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +58,15 @@ import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-stud
     MatInputModule,
     HttpClientModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
-    GameStudioService
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'} },
+    GameStudioService,
+    GameService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent]
 })

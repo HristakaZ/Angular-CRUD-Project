@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameStudio } from '../game-studio.model';
-import { GameStudioService } from '../services/game-studio.services';
+import { GameStudioService } from '../services/game-studio.service';
 
 @Component({
-  selector: 'update-game-studio-component',
+  selector: 'delete-game-studio-component',
   templateUrl: './delete-game-studio.component.html',
   styleUrls: ['./delete-game-studio.component.css']
 })

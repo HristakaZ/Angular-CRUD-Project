@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { GameStudio } from '../game-studio.model';
-import { GameStudioService } from '../services/game-studio.services';
+import { GameStudioService } from '../services/game-studio.service';
 
 @Component({
   selector: 'game-studio-component',

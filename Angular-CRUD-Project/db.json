@@ -6,14 +6,30 @@
       "dateOfCreation": "01-01-2000",
       "dateOfPremiere": "01-01-2000",
       "isAvailable": true,
-      "gameStudio": "EA"
+      "gameStudio": {
+        "id": 1,
+        "name": "EA"
+      }
+    },
+    {
+      "name": "Find The Treasure",
+      "dateOfCreation": "2022-05-28T21:00:00.000Z",
+      "dateOfPremiere": "2022-05-30T21:00:00.000Z",
+      "isAvailable": true,
+      "gameStudio": {
+        "name": "Ico's Gaming Studio X",
+        "dateOfEstablishment": "2022-06-08T21:00:00.000Z",
+        "mainOffice": "Veliko Tarnovo, Bulgaria",
+        "id": 3
+      },
+      "id": 2
     }
   ],
   "gameStudios": [
     {
       "id": 1,
       "name": "EA",
-      "dateOfEstablishment": "01-01-2000",
+      "dateOfEstablishment": "2022-06-07T21:00:00.000Z",
       "mainOffice": "Boston, Massachusets, USA",
       "games": [
         {

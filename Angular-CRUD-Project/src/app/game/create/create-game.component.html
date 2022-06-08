@@ -1,0 +1,52 @@
+<form [formGroup]="createGameForm" (ngSubmit)="createGame()">
+    
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game's name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the date of creation</mat-label>
+            <input matInput [matDatepicker]="dateOfCreationPicker" formControlName="dateOfCreation">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="dateOfCreationPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfCreationPicker></mat-datepicker>
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the date of premiere</mat-label>
+            <input matInput [matDatepicker]="dateOfPremierePicker" formControlName="dateOfPremiere">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="dateOfPremierePicker"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfPremierePicker></mat-datepicker>
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Is the game available for purchase?</mat-label>
+        <div>
+        <mat-slide-toggle color="primary" matInput formControlName="isAvailable">Is Available</mat-slide-toggle>
+        </div>
+    </div>
+
+    <div>
+    <mat-form-field appearance="fill">
+    <mat-label>Enter the game studio that created the game</mat-label>
+      <mat-select formControlName="gameStudio">
+        <mat-option *ngFor="let gameStudio of gameStudios" [value]="gameStudio.id">
+          {{gameStudio.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div>
+        <button mat-stroked-button color="accent" type="submit">Create</button>
+    </div>
+
+  </form>
