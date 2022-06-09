@@ -17,32 +17,6 @@
           }
         ]
       }
-    },
-    {
-      "id": 2,
-      "name": "EDIT YOYOYO PLS",
-      "dateOfCreation": "2022-06-13T21:00:00.000Z",
-      "dateOfPremiere": "2022-06-16T21:00:00.000Z",
-      "isAvailable": false,
-      "gameStudio": {
-        "name": "Ico's Gaming Studio X edited",
-        "dateOfEstablishment": "2022-06-08T21:00:00.000Z",
-        "mainOffice": "Veliko Tarnovo, Bulgaria",
-        "id": 3
-      }
-    },
-    {
-      "name": "third game, yo",
-      "dateOfCreation": "2022-06-08T21:00:00.000Z",
-      "dateOfPremiere": "2022-06-17T21:00:00.000Z",
-      "isAvailable": true,
-      "gameStudio": {
-        "name": "subscribing after creating",
-        "dateOfEstablishment": "2022-06-07T21:00:00.000Z",
-        "mainOffice": "yes, it works",
-        "id": 2
-      },
-      "id": 3
     }
   ],
   "gameStudios": [
@@ -56,18 +30,6 @@
           "name": "FIFA"
         }
       ]
-    },
-    {
-      "name": "subscribing after creating",
-      "dateOfEstablishment": "2022-06-07T21:00:00.000Z",
-      "mainOffice": "yes, it works",
-      "id": 2
-    },
-    {
-      "name": "Ico's Gaming Studio X edited",
-      "dateOfEstablishment": "2022-06-08T21:00:00.000Z",
-      "mainOffice": "Veliko Tarnovo, Bulgaria",
-      "id": 3
     }
   ]
 }

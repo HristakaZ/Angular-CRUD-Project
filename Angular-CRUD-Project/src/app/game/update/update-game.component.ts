@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameStudio } from 'src/app/game-studio/game-studio.model';
 import { GameStudioService } from 'src/app/game-studio/services/game-studio.service';
@@ -18,6 +18,22 @@ export class UpdateGameComponent implements OnInit {
     gameStudios: GameStudio[] = [];
     isIdInputHidden: boolean = true;
 
+    get name(): AbstractControl {
+        return this.updateGameForm.get('name')!;
+    }
+    get dateOfCreation(): AbstractControl {
+        return this.updateGameForm.get('dateOfCreation')!;
+    }
+    get dateOfPremiere(): AbstractControl {
+        return this.updateGameForm.get('dateOfPremiere')!;
+    }
+    get isAvailable(): AbstractControl {
+        return this.updateGameForm.get('isAvailable')!;
+    }
+    get gameStudio(): AbstractControl {
+        return this.updateGameForm.get('gameStudio')!;
+    }
+
     constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router) {
 
     }
@@ -26,11 +42,19 @@ export class UpdateGameComponent implements OnInit {
         let id: number = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
         this.updateGameForm = new FormGroup({
             id: new FormControl(''),
-            name: new FormControl(''),
-            dateOfCreation: new FormControl(''),
-            dateOfPremiere: new FormControl(''),
+            name: new FormControl('', [
+                Validators.required
+            ]),
+            dateOfCreation: new FormControl('', [
+                Validators.required
+            ]),
+            dateOfPremiere: new FormControl('', [
+                Validators.required
+            ]),
             isAvailable: new FormControl(''),
-            gameStudio: new FormControl('')
+            gameStudio: new FormControl('', [
+                Validators.required
+            ])
         });
         
         this.gameService.$getById(id).subscribe(x => {
@@ -51,14 +75,17 @@ export class UpdateGameComponent implements OnInit {
     }
     
     updateGame(): void {
-        this.game.id = this.updateGameForm.value.id;
-        this.game.name = this.updateGameForm.value.name;
-        this.game.dateOfCreation = this.updateGameForm.value.dateOfCreation;
-        this.game.dateOfPremiere = this.updateGameForm.value.dateOfPremiere;
-        this.game.isAvailable = this.updateGameForm.value.isAvailable;
-        this.game.gameStudio = this.gameStudios.find(x => x.id === this.updateGameForm.value.gameStudio)!;
-        this.gameService.$update(this.game).subscribe(x => {
-            this.router.navigateByUrl('games');
-        });
+        debugger;
+        if (!this.updateGameForm.invalid) {
+            this.game.id = this.updateGameForm.value.id;
+            this.game.name = this.updateGameForm.value.name;
+            this.game.dateOfCreation = this.updateGameForm.value.dateOfCreation;
+            this.game.dateOfPremiere = this.updateGameForm.value.dateOfPremiere;
+            this.game.isAvailable = this.updateGameForm.value.isAvailable;
+            this.game.gameStudio = this.gameStudios.find(x => x.id === this.updateGameForm.value.gameStudio)!;
+            this.gameService.$update(this.game).subscribe(x => {
+                this.router.navigateByUrl('games');
+            });
+        }
     }
 }

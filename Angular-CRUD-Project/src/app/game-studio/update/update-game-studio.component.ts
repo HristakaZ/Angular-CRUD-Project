@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameStudio } from '../game-studio.model';
 import { GameStudioService } from '../services/game-studio.service';
@@ -14,6 +14,15 @@ export class UpdateGameStudioComponent implements OnInit {
     updateGameStudioForm!: FormGroup;
     gameStudio: GameStudio = new GameStudio();
     isIdInputHidden: boolean = true;
+    get name(): AbstractControl {
+        return this.updateGameStudioForm.get('name')!;
+    }
+    get dateOfEstablishment(): AbstractControl {
+        return this.updateGameStudioForm.get('dateOfEstablishment')!;
+    }
+    get mainOffice(): AbstractControl {
+        return this.updateGameStudioForm.get('mainOffice')!;
+    }
 
     constructor(private gameStudioService: GameStudioService, private router: Router) {
 
@@ -23,9 +32,16 @@ export class UpdateGameStudioComponent implements OnInit {
         let id: number = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
         this.updateGameStudioForm = new FormGroup({
             id: new FormControl(''),
-            name: new FormControl(''),
-            dateOfEstablishment: new FormControl(''),
-            mainOffice: new FormControl(''),
+            name: new FormControl('', [
+                Validators.required
+            ]),
+            dateOfEstablishment: new FormControl('', [
+                Validators.required
+            ]),
+            mainOffice: new FormControl('', [
+                Validators.required,
+                Validators.minLength(6)
+            ])
         });
         
         this.gameStudioService.$getById(id).subscribe(x => {
@@ -41,12 +57,14 @@ export class UpdateGameStudioComponent implements OnInit {
     
     updateGameStudio(): void {
         debugger;
-        this.gameStudio.id = this.updateGameStudioForm.value.id;
-        this.gameStudio.name = this.updateGameStudioForm.value.name;
-        this.gameStudio.dateOfEstablishment = this.updateGameStudioForm.value.dateOfEstablishment;
-        this.gameStudio.mainOffice = this.updateGameStudioForm.value.mainOffice;
-        this.gameStudioService.$update(this.gameStudio).subscribe(x => {
-            this.router.navigateByUrl('game-studios');
-        });
+        if(!this.updateGameStudioForm.invalid) {
+            this.gameStudio.id = this.updateGameStudioForm.value.id;
+            this.gameStudio.name = this.updateGameStudioForm.value.name;
+            this.gameStudio.dateOfEstablishment = this.updateGameStudioForm.value.dateOfEstablishment;
+            this.gameStudio.mainOffice = this.updateGameStudioForm.value.mainOffice;
+            this.gameStudioService.$update(this.gameStudio).subscribe(x => {
+                this.router.navigateByUrl('game-studios');
+            });
+        }
     }
 }

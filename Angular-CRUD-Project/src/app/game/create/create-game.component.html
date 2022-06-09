@@ -9,6 +9,9 @@
             <mat-label>Enter the game's name</mat-label>
             <input matInput formControlName="name">
         </mat-form-field>
+        <span *ngIf="name.errors?.['required'] && (name.dirty || name.touched)">
+          Name is required.
+        </span>
     </div>
 
     <div>
@@ -19,6 +22,9 @@
             <mat-datepicker-toggle matSuffix [for]="dateOfCreationPicker"></mat-datepicker-toggle>
             <mat-datepicker #dateOfCreationPicker></mat-datepicker>
           </mat-form-field>
+          <span *ngIf="dateOfCreation.errors?.['required'] && (dateOfCreation.dirty || dateOfCreation.touched)">
+            Date Of Creation is required.
+          </span>
     </div>
 
     <div>
@@ -29,6 +35,9 @@
             <mat-datepicker-toggle matSuffix [for]="dateOfPremierePicker"></mat-datepicker-toggle>
             <mat-datepicker #dateOfPremierePicker></mat-datepicker>
           </mat-form-field>
+          <span *ngIf="dateOfPremiere.errors?.['required'] && (dateOfPremiere.dirty || dateOfPremiere.touched)">
+            Date Of Premiere is required.
+          </span>
     </div>
 
     <div>
@@ -39,14 +48,17 @@
     </div>
 
     <div>
-    <mat-form-field appearance="fill">
-    <mat-label>Enter the game studio that created the game</mat-label>
-      <mat-select formControlName="gameStudio">
-        <mat-option *ngFor="let gameStudio of gameStudios" [value]="gameStudio.id">
-          {{gameStudio.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+      <mat-label>Enter the game studio that created the game</mat-label>
+        <mat-select formControlName="gameStudio">
+          <mat-option *ngFor="let gameStudio of gameStudios" [value]="gameStudio.id">
+            {{gameStudio.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span *ngIf="gameStudio.errors?.['required'] && (gameStudio.dirty || gameStudio.touched)">
+        Game Studio is required.
+      </span>
     </div>
 
     <div>
