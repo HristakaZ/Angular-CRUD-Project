@@ -28,11 +28,11 @@ export class DeleteGameStudioComponent implements OnInit {
             id: new FormControl('')
         });
         
-        this.gameService.getAll().subscribe(games => {
+        this.gameService.$getAll().subscribe(games => {
             this.games = games;
         });
 
-        this.gameStudioService.getById(id).subscribe(x => {
+        this.gameStudioService.$getById(id).subscribe(x => {
             debugger;
             this.gameStudio = x;
             this.gameStudio.games = this.games.filter(y => y.gameStudio.id === this.gameStudio.id);
@@ -45,7 +45,7 @@ export class DeleteGameStudioComponent implements OnInit {
     deleteGameStudio(): void {
         debugger;
         console.log(this.deleteGameStudioForm.value.id);
-        this.gameStudioService.delete(this.deleteGameStudioForm.value.id).subscribe(x => {
+        this.gameStudioService.$delete(this.deleteGameStudioForm.value.id).subscribe(x => {
             this.router.navigateByUrl('game-studios');
         });
     }

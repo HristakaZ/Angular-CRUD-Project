@@ -28,7 +28,7 @@ export class CreateGameComponent implements OnInit {
             isAvailable: new FormControl(''),
             gameStudio: new FormControl('')
         });
-        this.gameStudioService.getAll().subscribe((gameStudios) => {
+        this.gameStudioService.$getAll().subscribe((gameStudios) => {
             this.gameStudios = gameStudios;
         });
     }
@@ -41,7 +41,7 @@ export class CreateGameComponent implements OnInit {
         game.dateOfPremiere = this.createGameForm.value.dateOfPremiere;
         game.isAvailable = this.createGameForm.value.isAvailable;
         game.gameStudio = this.gameStudios.find(x => x.id === this.createGameForm.value.gameStudio)!;
-        this.gameService.create(game).subscribe(() => {
+        this.gameService.$create(game).subscribe(() => {
             this.router.navigateByUrl('games');
         });
     }

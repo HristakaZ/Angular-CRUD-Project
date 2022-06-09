@@ -28,7 +28,7 @@ export class UpdateGameStudioComponent implements OnInit {
             mainOffice: new FormControl(''),
         });
         
-        this.gameStudioService.getById(id).subscribe(x => {
+        this.gameStudioService.$getById(id).subscribe(x => {
             this.gameStudio = x;    
             this.updateGameStudioForm.setValue({
                 id: this.gameStudio.id,
@@ -45,7 +45,7 @@ export class UpdateGameStudioComponent implements OnInit {
         this.gameStudio.name = this.updateGameStudioForm.value.name;
         this.gameStudio.dateOfEstablishment = this.updateGameStudioForm.value.dateOfEstablishment;
         this.gameStudio.mainOffice = this.updateGameStudioForm.value.mainOffice;
-        this.gameStudioService.update(this.gameStudio).subscribe(x => {
+        this.gameStudioService.$update(this.gameStudio).subscribe(x => {
             this.router.navigateByUrl('game-studios');
         });
     }

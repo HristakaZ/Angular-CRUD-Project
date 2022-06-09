@@ -25,7 +25,7 @@ export class DeleteGameComponent implements OnInit {
             id: new FormControl('')
         });
         
-        this.gameService.getById(id).subscribe(x => {
+        this.gameService.$getById(id).subscribe(x => {
             debugger;
             this.game = x;    
             this.deleteGameForm.setValue({
@@ -36,7 +36,7 @@ export class DeleteGameComponent implements OnInit {
     
     deleteGame(): void {
         debugger;
-        this.gameService.delete(this.deleteGameForm.value.id).subscribe(x => {
+        this.gameService.$delete(this.deleteGameForm.value.id).subscribe(x => {
             this.router.navigateByUrl('games');
         });
     }

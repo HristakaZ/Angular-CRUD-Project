@@ -8,23 +8,23 @@ export class GameService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getAll(): Observable<Game[]> {
+  public $getAll(): Observable<Game[]> {
     return this.httpClient.get<Game[]>('http://localhost:3000/games');
   }
 
-  public getById(id: number): Observable<Game> {
+  public $getById(id: number): Observable<Game> {
     return this.httpClient.get<Game>(`http://localhost:3000/games/${id}`);
   }
 
-  public delete(id: number): Observable<Object> {
+  public $delete(id: number): Observable<Object> {
     return this.httpClient.delete(`http://localhost:3000/games/${id}`);
   }
 
-  public create(game: Game): Observable<Object> {
+  public $create(game: Game): Observable<Object> {
     return this.httpClient.post('http://localhost:3000/games', game);
   }
 
-  public update(game: Game): Observable<Object> {
+  public $update(game: Game): Observable<Object> {
     return this.httpClient.put(`http://localhost:3000/games/${game.id}`, game);
   }
 }

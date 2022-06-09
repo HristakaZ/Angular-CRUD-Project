@@ -33,7 +33,7 @@ export class UpdateGameComponent implements OnInit {
             gameStudio: new FormControl('')
         });
         
-        this.gameService.getById(id).subscribe(x => {
+        this.gameService.$getById(id).subscribe(x => {
             this.game = x;
             this.updateGameForm.setValue({
                 id: this.game.id,
@@ -45,7 +45,7 @@ export class UpdateGameComponent implements OnInit {
             });
         });
 
-        this.gameStudioService.getAll().subscribe(gameStudios => {
+        this.gameStudioService.$getAll().subscribe(gameStudios => {
             this.gameStudios = gameStudios;
         });
     }
@@ -57,7 +57,7 @@ export class UpdateGameComponent implements OnInit {
         this.game.dateOfPremiere = this.updateGameForm.value.dateOfPremiere;
         this.game.isAvailable = this.updateGameForm.value.isAvailable;
         this.game.gameStudio = this.gameStudios.find(x => x.id === this.updateGameForm.value.gameStudio)!;
-        this.gameService.update(this.game).subscribe(x => {
+        this.gameService.$update(this.game).subscribe(x => {
             this.router.navigateByUrl('games');
         });
     }

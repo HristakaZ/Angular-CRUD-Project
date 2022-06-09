@@ -17,10 +17,10 @@ export class GameStudioComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-      this.gameStudioService.getAll().subscribe((gameStudios) => {
+      this.gameStudioService.$getAll().subscribe((gameStudios) => {
         this.gameStudios = gameStudios;
         this.gameStudios.forEach(gameStudio => {
-          this.gameService.getAll().subscribe(games => {
+          this.gameService.$getAll().subscribe(games => {
             gameStudio.games = games.filter(game => game.gameStudio.id === gameStudio.id);
           });
         });
@@ -28,10 +28,10 @@ export class GameStudioComponent implements OnInit, AfterViewInit {
     }
     
     ngAfterViewInit(): void {
-      this.gameStudioService.getAll().subscribe((gameStudios) => {
+      this.gameStudioService.$getAll().subscribe((gameStudios) => {
         this.gameStudios = gameStudios;
         this.gameStudios.forEach(gameStudio => {
-          this.gameService.getAll().subscribe(games => {
+          this.gameService.$getAll().subscribe(games => {
             gameStudio.games = games.filter(game => game.gameStudio.id === gameStudio.id);
           });
         });

@@ -16,13 +16,13 @@ export class GameComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-      this.gameService.getAll().subscribe((games) => {
+      this.gameService.$getAll().subscribe((games) => {
         this.games = games;
       });
     }
     
     ngAfterViewInit(): void {
-      this.gameService.getAll().subscribe((games) => {
+      this.gameService.$getAll().subscribe((games) => {
         this.games = games;
       });
     }

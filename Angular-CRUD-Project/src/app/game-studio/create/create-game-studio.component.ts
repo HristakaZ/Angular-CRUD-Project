@@ -31,7 +31,7 @@ export class CreateGameStudioComponent implements OnInit {
         gameStudio.name = this.createGameStudioForm.value.name;
         gameStudio.dateOfEstablishment = this.createGameStudioForm.value.dateOfEstablishment;
         gameStudio.mainOffice = this.createGameStudioForm.value.mainOffice;
-        this.gameStudioService.create(gameStudio).subscribe(x => {
+        this.gameStudioService.$create(gameStudio).subscribe(x => {
             this.router.navigateByUrl('game-studios');
         });
     }
