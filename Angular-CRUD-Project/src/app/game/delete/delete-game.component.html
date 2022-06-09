@@ -1,0 +1,22 @@
+<form [formGroup]="deleteGameForm" (ngSubmit)="deleteGame()">
+    <h1>Are you sure you want to delete this game?</h1>
+    <div *ngIf="!isIdInputHidden">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter the game's id</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <ng-container>
+        <h2>Name: {{game.name}}</h2>
+        <p>Date Of Creation: {{game.dateOfCreation | date : 'dd/MM/yyyy'}}</p>
+        <p>Date Of Premiere: {{game.dateOfPremiere | date : 'dd/MM/yyyy'}}</p>
+        <p>Is available for purchase: {{game.isAvailable}}</p>
+        <h2>Made by game studio: {{game.gameStudio.name}}</h2>
+    </ng-container>
+
+    <div>
+        <button mat-stroked-button color="accent" type="submit">Delete</button>
+    </div>
+
+  </form>

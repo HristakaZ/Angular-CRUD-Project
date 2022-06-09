@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { GameService } from 'src/app/game-studio/services/game.service';
+import { GameService } from 'src/app/game/services/game.service';
 import { Game } from '../game.model';
 
 @Component({
@@ -9,7 +9,7 @@ import { Game } from '../game.model';
 })
 
 export class GameComponent implements OnInit, AfterViewInit {
-    public games!: Game[];
+    public games: Game[] = [];
     public columnsToDisplay = ['name', 'dateOfCreation', 'dateOfPremiere', 'isAvailable', 'gameStudio', 'updateButton', 'deleteButton'];
     constructor(private gameService: GameService) {
 

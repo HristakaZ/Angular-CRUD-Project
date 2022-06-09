@@ -7,6 +7,8 @@ import { UpdateGameStudioComponent } from './game-studio/update/update-game-stud
 import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-studio.component';
 import { GameComponent } from './game/read/game.component';
 import { CreateGameComponent } from './game/create/create-game.component';
+import { UpdateGameComponent } from './game/update/update-game.component';
+import { DeleteGameComponent } from './game/delete/delete-game.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'game-studios/update/:id', component: UpdateGameStudioComponent },
   { path: 'game-studios/delete/:id', component: DeleteGameStudioComponent },
   { path: 'games', component: GameComponent },
-  { path: 'games/create', component: CreateGameComponent }
+  { path: 'games/create', component: CreateGameComponent },
+  { path: 'games/update/:id', component: UpdateGameComponent },
+  { path: 'games/delete/:id', component: DeleteGameComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Game } from 'src/app/game/game.model';
+import { GameService } from 'src/app/game/services/game.service';
 import { GameStudio } from '../game-studio.model';
 import { GameStudioService } from '../services/game-studio.service';
 
@@ -12,11 +14,11 @@ import { GameStudioService } from '../services/game-studio.service';
 
 export class DeleteGameStudioComponent implements OnInit {
     deleteGameStudioForm!: FormGroup;
-    gameStudio!: GameStudio;
+    gameStudio: GameStudio = new GameStudio();
+    games: Game[] = [];
     isIdInputHidden: boolean = true;
-    public columnsToDisplay = ['name', 'dateOfEstablishment', 'mainOffice', 'games'];
 
-    constructor(private gameStudioService: GameStudioService, private router: Router) {
+    constructor(private gameStudioService: GameStudioService, private gameService: GameService, private router: Router) {
 
     }
 
@@ -26,8 +28,14 @@ export class DeleteGameStudioComponent implements OnInit {
             id: new FormControl('')
         });
         
+        this.gameService.getAll().subscribe(games => {
+            this.games = games;
+        });
+
         this.gameStudioService.getById(id).subscribe(x => {
-            this.gameStudio = x;    
+            debugger;
+            this.gameStudio = x;
+            this.gameStudio.games = this.games.filter(y => y.gameStudio.id === this.gameStudio.id);
             this.deleteGameStudioForm.setValue({
                 id: this.gameStudio.id
             });

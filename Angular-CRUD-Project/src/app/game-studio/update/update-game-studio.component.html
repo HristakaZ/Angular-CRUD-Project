@@ -1,5 +1,9 @@
 <form [formGroup]="updateGameStudioForm" (ngSubmit)="updateGameStudio()">
 
+    <div>
+        <h1>Update the game studio</h1>
+    </div>
+
     <div *ngIf="!isIdInputHidden">
         <mat-form-field appearance="fill">
             <mat-label>Enter the game studio's id</mat-label>

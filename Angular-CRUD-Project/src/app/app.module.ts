@@ -26,9 +26,11 @@ import { UpdateGameStudioComponent } from './game-studio/update/update-game-stud
 import { DeleteGameStudioComponent } from './game-studio/delete/delete-game-studio.component';
 import { GameComponent } from './game/read/game.component';
 import { CreateGameComponent } from './game/create/create-game.component';
-import { GameService } from './game-studio/services/game.service';
+import { GameService } from './game/services/game.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { UpdateGameComponent } from './game/update/update-game.component';
+import { DeleteGameComponent } from './game/delete/delete-game.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatSelectModule } from '@angular/material/select';
     UpdateGameStudioComponent,
     DeleteGameStudioComponent,
     GameComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    UpdateGameComponent,
+    DeleteGameComponent
   ],
   imports: [
     BrowserModule,

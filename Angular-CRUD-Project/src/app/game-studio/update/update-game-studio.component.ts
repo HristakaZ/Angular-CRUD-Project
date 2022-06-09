@@ -12,7 +12,7 @@ import { GameStudioService } from '../services/game-studio.service';
 
 export class UpdateGameStudioComponent implements OnInit {
     updateGameStudioForm!: FormGroup;
-    gameStudio!: GameStudio;
+    gameStudio: GameStudio = new GameStudio();
     isIdInputHidden: boolean = true;
 
     constructor(private gameStudioService: GameStudioService, private router: Router) {

@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameStudio } from 'src/app/game-studio/game-studio.model';
 import { GameStudioService } from 'src/app/game-studio/services/game-studio.service';
-import { GameService } from 'src/app/game-studio/services/game.service';
+import { GameService } from 'src/app/game/services/game.service';
 import { Game } from '../game.model';
 
 @Component({
@@ -14,7 +14,7 @@ import { Game } from '../game.model';
 
 export class CreateGameComponent implements OnInit {
     createGameForm!: FormGroup;
-    gameStudios!: GameStudio[];
+    gameStudios: GameStudio[] = [];
 
     constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router) {
 

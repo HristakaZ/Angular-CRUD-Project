@@ -1,8 +1,13 @@
-  <div class="createButton">
-    <button mat-raised-button [routerLink]="'/game-studios/create'">Create Game Studio</button>
-  </div>
+<div>
+  <h1 class="centerInlineElement">Game studios</h1>
+</div>
 
-   <table mat-table [dataSource]="gameStudios" class="mat-elevation-z8" (change)="ngAfterViewInit()">
+<div class="createButton">
+  <button mat-raised-button [routerLink]="'/game-studios/create'">Create Game Studio</button>
+</div>
+
+
+<table mat-table [dataSource]="gameStudios" class="mat-elevation-z8" (change)="ngAfterViewInit()">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let gameStudio">{{gameStudio.name}}</td>
@@ -22,7 +27,7 @@
       <th mat-header-cell *matHeaderCellDef>Games</th>
       <td mat-cell *matCellDef="let gameStudio">
           <ng-container *ngFor="let game of gameStudio.games; let isLast = last">
-              {{isLast ? game.name : game.name + ','}}
+              {{isLast ? game.name : game.name + ';'}}
           </ng-container>
         </td>
       </ng-container>

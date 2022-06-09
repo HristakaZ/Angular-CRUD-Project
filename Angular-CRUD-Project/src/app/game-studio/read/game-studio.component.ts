@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { GameStudio } from '../game-studio.model';
 import { GameStudioService } from '../services/game-studio.service';
-import { GameService } from '../services/game.service';
+import { GameService } from '../../game/services/game.service';
 
 @Component({
   selector: 'game-studio-component',
@@ -10,7 +10,7 @@ import { GameService } from '../services/game.service';
 })
 
 export class GameStudioComponent implements OnInit, AfterViewInit {
-    public gameStudios!: GameStudio[];
+    public gameStudios: GameStudio[] = [];
     public columnsToDisplay = ['name', 'dateOfEstablishment', 'mainOffice', 'games', 'updateButton', 'deleteButton'];
     constructor(private gameStudioService: GameStudioService, private gameService: GameService) {
 
