@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Game } from 'src/app/game/game.model';
 import { GameService } from 'src/app/game/services/game.service';
@@ -18,7 +19,8 @@ export class DeleteGameStudioComponent implements OnInit {
     games: Game[] = [];
     isIdInputHidden: boolean = true;
 
-    constructor(private gameStudioService: GameStudioService, private gameService: GameService, private router: Router) {
+    constructor(private gameStudioService: GameStudioService, private gameService: GameService, private router: Router,
+        private deleteGameStudioSnackBar: MatSnackBar) {
 
     }
 
@@ -46,6 +48,9 @@ export class DeleteGameStudioComponent implements OnInit {
         debugger;
         console.log(this.deleteGameStudioForm.value.id);
         this.gameStudioService.$delete(this.deleteGameStudioForm.value.id).subscribe(x => {
+            this.deleteGameStudioSnackBar.open('Game was successfully deleted!', 'X', {
+                duration: 3000
+            });
             this.router.navigateByUrl('game-studios');
         });
     }

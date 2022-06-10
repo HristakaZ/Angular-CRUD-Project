@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GameStudio } from 'src/app/game-studio/game-studio.model';
 import { GameStudioService } from 'src/app/game-studio/services/game-studio.service';
@@ -34,7 +35,8 @@ export class UpdateGameComponent implements OnInit {
         return this.updateGameForm.get('gameStudio')!;
     }
 
-    constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router) {
+    constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router,
+        private updateGameSnackBar: MatSnackBar) {
 
     }
 
@@ -84,7 +86,15 @@ export class UpdateGameComponent implements OnInit {
             this.game.isAvailable = this.updateGameForm.value.isAvailable;
             this.game.gameStudio = this.gameStudios.find(x => x.id === this.updateGameForm.value.gameStudio)!;
             this.gameService.$update(this.game).subscribe(x => {
+                this.updateGameSnackBar.open('Game was successfully updated!', 'X', {
+                    duration: 3000
+                });
                 this.router.navigateByUrl('games');
+            });
+        }
+        else {
+            this.updateGameSnackBar.open('There were validation errors while updating the game!', 'X', {
+                duration: 3000
             });
         }
     }

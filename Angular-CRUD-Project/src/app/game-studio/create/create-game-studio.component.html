@@ -9,7 +9,7 @@
             <mat-label>Enter the game studio's name</mat-label>
             <input matInput formControlName="name">
         </mat-form-field>
-        <span *ngIf="name.errors?.['required'] && (name.dirty || name.touched)">
+        <span class="validationError" *ngIf="name.errors?.['required'] && (name.dirty || name.touched)">
             Name is required.
         </span>
     </div>
@@ -22,7 +22,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <span *ngIf="dateOfEstablishment.errors?.['required'] && (dateOfEstablishment.dirty || dateOfEstablishment.touched)">
+          <span class="validationError" *ngIf="dateOfEstablishment.errors?.['required'] && (dateOfEstablishment.dirty || dateOfEstablishment.touched)">
                 Date Of Establishment is required.
           </span>
     </div>
@@ -32,10 +32,10 @@
             <mat-label>Enter the game studio's main office</mat-label>
             <input matInput formControlName="mainOffice">
         </mat-form-field>
-        <span *ngIf="mainOffice.errors?.['required'] && (mainOffice.dirty || mainOffice.touched)">
+        <span class="validationError" *ngIf="mainOffice.errors?.['required'] && (mainOffice.dirty || mainOffice.touched)">
             Main Office is required.
         </span>
-        <span *ngIf="mainOffice.errors?.['minlength']">
+        <span class="validationError" *ngIf="mainOffice.errors?.['minlength']">
             Main Office must be at least 6 characters long.
         </span>
     </div>

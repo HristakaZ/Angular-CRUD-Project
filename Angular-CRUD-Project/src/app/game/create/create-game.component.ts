@@ -5,6 +5,7 @@ import { GameStudio } from 'src/app/game-studio/game-studio.model';
 import { GameStudioService } from 'src/app/game-studio/services/game-studio.service';
 import { GameService } from 'src/app/game/services/game.service';
 import { Game } from '../game.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'create-game-component',
@@ -31,7 +32,8 @@ export class CreateGameComponent implements OnInit {
         return this.createGameForm.get('gameStudio')!;
     }
 
-    constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router) {
+    constructor(private gameService: GameService, private gameStudioService: GameStudioService, private router: Router, 
+        private createGameSnackBar: MatSnackBar) {
 
     }
 
@@ -66,7 +68,15 @@ export class CreateGameComponent implements OnInit {
             game.isAvailable = this.createGameForm.value.isAvailable;
             game.gameStudio = this.gameStudios.find(x => x.id === this.createGameForm.value.gameStudio)!;
             this.gameService.$create(game).subscribe(() => {
+                this.createGameSnackBar.open('Game was successfully created!', 'X', {
+                    duration: 3000
+                });
                 this.router.navigateByUrl('games');
+            });
+        }
+        else {
+            this.createGameSnackBar.open('There were validation errors while creating the game!', 'X', {
+                duration: 3000
             });
         }
     }

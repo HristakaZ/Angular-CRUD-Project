@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GameStudio } from '../game-studio.model';
 import { GameStudioService } from '../services/game-studio.service';
@@ -22,7 +23,7 @@ export class CreateGameStudioComponent implements OnInit {
         return this.createGameStudioForm.get('mainOffice')!;
     }
 
-    constructor(private gameStudioService: GameStudioService, private router: Router) {
+    constructor(private gameStudioService: GameStudioService, private router: Router, private createGameStudioSnackBar: MatSnackBar) {
 
     }
 
@@ -49,7 +50,15 @@ export class CreateGameStudioComponent implements OnInit {
             gameStudio.dateOfEstablishment = this.createGameStudioForm.value.dateOfEstablishment;
             gameStudio.mainOffice = this.createGameStudioForm.value.mainOffice;
             this.gameStudioService.$create(gameStudio).subscribe(x => {
+                this.createGameStudioSnackBar.open('Game studio was successfully created!', 'X', {
+                    duration: 3000
+                });
                 this.router.navigateByUrl('game-studios');
+            });
+        }
+        else {
+            this.createGameStudioSnackBar.open('There were validation errors while creating the game studio!', 'X', {
+                duration: 3000
             });
         }
     }

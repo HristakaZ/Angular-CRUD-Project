@@ -31,6 +31,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { UpdateGameComponent } from './game/update/update-game.component';
 import { DeleteGameComponent } from './game/delete/delete-game.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DeleteGameComponent } from './game/delete/delete-game.component';
     CommonModule,
     MatTableModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'} },
