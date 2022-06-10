@@ -24,7 +24,10 @@
 
     <ng-container matColumnDef="isAvailable">
       <th mat-header-cell *matHeaderCellDef>Is Available</th>
-      <td mat-cell *matCellDef="let game">{{game.isAvailable}}</td>
+      <td mat-cell *matCellDef="let game">
+        <span *ngIf="game.isAvailable"><img src="{{relativeGameGreenTickUrl}}" width="30" height="30" alt="true"></span>
+        <span *ngIf="!game.isAvailable"><img src="{{relativeGameRedCrossUrl}}" width="30" height="30" alt="false"></span>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="gameStudio">

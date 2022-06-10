@@ -12,6 +12,8 @@ import { Game } from '../game.model';
 export class GameComponent implements OnInit, AfterViewInit {
     public games: Game[] = [];
     public columnsToDisplay = ['name', 'dateOfCreation', 'dateOfPremiere', 'isAvailable', 'gameStudio', 'updateButton', 'deleteButton'];
+    readonly relativeGameGreenTickUrl: string = 'assets/isavailable.png';
+    readonly relativeGameRedCrossUrl: string = 'assets/isnotavailable.png';
     constructor(private gameService: GameService, private gameStudioService: GameStudioService) {
 
     }
