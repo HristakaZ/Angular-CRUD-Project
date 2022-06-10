@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { UpdateGameComponent } from './game/update/update-game.component';
 import { DeleteGameComponent } from './game/delete/delete-game.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BackButtonComponent } from './utilities/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     GameComponent,
     CreateGameComponent,
     UpdateGameComponent,
-    DeleteGameComponent
+    DeleteGameComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,
